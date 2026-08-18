@@ -215,7 +215,7 @@ export const copy = {
     pirate: 'PIRATE REJOINT L’ÉQUIPE',
     peewee: 'PEEWEE REJOINT L’ÉQUIPE',
     size: 'ÉQUIPE // 4 MEMBRES',
-    note: 'Frère et sœur. Adoptés le même jour.',
+    note: 'Frère et sœur. Ils rejoignent la famille.',
   },
 
   levels: {
