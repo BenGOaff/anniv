@@ -4,6 +4,7 @@
 
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { copy, marks, storyConfig, type Achievement } from '../config/story.config'
+import { getParams } from '../hooks/useGameProgress'
 import { sfx } from '../lib/audio'
 
 /* ---------- HUD ---------- */
@@ -266,6 +267,11 @@ export function PhotoPlate({ onStatus }: { onStatus?: (ok: boolean) => void }) {
   const { photo } = storyConfig
   const [ok, setOk] = useState(false)
 
+  /* ?photo=naturelle ou ?photo=duotone : permet de comparer les deux
+     rendus directement sur le telephone, sans recompiler. */
+  const override = getParams().get('photo')
+  const treatment = override === 'naturelle' || override === 'duotone' ? override : photo.treatment
+
   if (!photo.enabled) return null
 
   return (
@@ -288,7 +294,7 @@ export function PhotoPlate({ onStatus }: { onStatus?: (ok: boolean) => void }) {
           </feComponentTransfer>
         </filter>
       </svg>
-      <div className={`photo-frame ${photo.treatment === 'duotone' ? 'duotone' : ''}`}>
+      <div className={`photo-frame ${treatment === 'duotone' ? 'duotone' : ''}`}>
         <img
           src={photo.src}
           alt=""
