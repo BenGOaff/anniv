@@ -5,3 +5,6 @@ qr
 .DS_Store
 .vite
 *.tsbuildinfo
+
+# Archives de build envoyees pour deploiement manuel
+*.zip
