@@ -225,7 +225,6 @@
   height: 8px;
   border-radius: 50%;
   background: var(--aqua);
-  box-shadow: 0 0 8px var(--aqua);
 }
 
 .gx-info {
@@ -562,12 +561,10 @@
 
 .ld-dot.blue {
   background: var(--blue);
-  box-shadow: 0 0 14px rgba(52, 120, 246, 0.8);
 }
 
 .ld-dot.red {
   background: var(--red);
-  box-shadow: 0 0 14px rgba(230, 62, 72, 0.8);
   animation-delay: 1.2s;
 }
 
@@ -1086,6 +1083,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* purement decoratif : ne doit jamais intercepter un tap */
+  pointer-events: none;
 }
 
 .cn-station.left {
@@ -1122,6 +1121,7 @@
   transform: translateX(-50%);
   display: flex;
   align-items: flex-end;
+  pointer-events: none;
 }
 
 .cn-cats svg:last-child {
@@ -1130,8 +1130,9 @@
 
 .cn-spot {
   position: absolute;
-  width: 44px;
-  height: 44px;
+  z-index: 3;
+  width: 48px;
+  height: 48px;
   transform: translate(-50%, -50%);
   display: grid;
   place-items: center;
@@ -1142,7 +1143,7 @@
   height: 14px;
   border-radius: 50%;
   background: var(--orange);
-  box-shadow: 0 0 0 6px rgba(255, 90, 36, 0.18);
+  box-shadow: 0 0 0 5px rgba(255, 90, 36, 0.13);
   animation: softPulse 2s var(--ease-in-out) infinite;
 }
 
@@ -1416,7 +1417,7 @@
   color: var(--orange);
   text-align: center;
   animation: tomorrowIn 1100ms var(--ease-out) both;
-  text-shadow: 0 8px 40px rgba(255, 90, 36, 0.35);
+  text-shadow: 0 6px 28px rgba(255, 90, 36, 0.22);
 }
 
 @keyframes tomorrowIn {
@@ -1638,7 +1639,7 @@
   font-weight: 700;
   font-size: 40px;
   color: var(--orange);
-  box-shadow: 0 0 40px rgba(255, 90, 36, 0.35), inset 0 0 24px rgba(255, 90, 36, 0.18);
+  box-shadow: inset 0 0 18px rgba(255, 90, 36, 0.12);
   animation: softPulse 2.6s var(--ease-in-out) infinite;
 }
 
@@ -1681,6 +1682,8 @@
   color: var(--red);
   font-size: 19px;
 }
+
+.ep-family[hidden] { display: none; }
 
 .ep-family {
   display: flex;
@@ -1746,8 +1749,7 @@
   height: 8px;
   border-radius: 50%;
   background: var(--red);
-  box-shadow: 0 0 10px var(--red);
-  animation: softPulse 1.4s infinite;
+  animation: breathe 2.2s infinite;
 }
 
 .ep-talk {
@@ -1798,4 +1800,78 @@
 
 .ld-dark .ld-link {
   opacity: 0;
+}
+
+
+/* ---------- Plaque photo (epilogue) ---------- */
+
+.photo-plate {
+  width: 100%;
+  max-width: 262px;
+  padding: 9px 9px 0;
+  border: 1px solid var(--line-strong);
+  background: rgba(11, 16, 32, 0.86);
+  animation: plateIn 1100ms var(--ease-out) both;
+}
+
+@keyframes plateIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.photo-frame {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: #0b1020;
+  /* isole le melange : le duotone ne doit teinter que la photo,
+     pas tout ce qui se trouve derriere dans la page */
+  isolation: isolate;
+}
+
+.photo-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Traitement duotone via filtre SVG (voir PhotoPlate) : rendu
+   identique sur Chrome Android et Safari iOS, contrairement a
+   mix-blend-mode dont le compositing n'est pas fiable. */
+.photo-frame.duotone img {
+  filter: url(#cs-duotone) contrast(1.04);
+}
+
+.photo-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(120% 100% at 50% 35%, transparent 45%, rgba(6, 10, 20, 0.42) 100%);
+}
+
+.photo-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 1px 9px;
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.13em;
+  color: var(--grey-dim);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.photo-caption b {
+  color: var(--orange);
+  font-weight: 500;
 }

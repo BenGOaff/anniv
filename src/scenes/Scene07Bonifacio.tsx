@@ -50,7 +50,7 @@ export function Scene07Bonifacio({ onDone, unlock }: SceneProps) {
   const sayYes = () => {
     sfx('reveal')
     setPhase('yes')
-    unlock('main-quest')
+    unlock('quete-principale')
   }
 
   if (phase === 'sail') {
@@ -178,7 +178,7 @@ export function Scene07Bonifacio({ onDone, unlock }: SceneProps) {
           </div>
         )}
         {phase === 'yes' && accepted >= copy.bonifacio.accepted.length && (
-          <Cta onClick={onDone}>CONTINUER</Cta>
+          <Cta onClick={onDone}>{copy.ui.continue}</Cta>
         )}
       </div>
     </SceneShell>

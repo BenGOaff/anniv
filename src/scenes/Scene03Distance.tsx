@@ -70,7 +70,7 @@ export function Scene03Distance({ onDone, unlock }: SceneProps) {
   useTimeout(() => setPhase('checking'), phase === 'lost' ? 1800 : null)
   useTimeout(() => {
     setPhase('found')
-    unlock('save-file-found')
+    unlock('sauvegarde')
   }, phase === 'checking' ? 1900 : null)
 
   const foundLines = useStagger(copy.distance.found.length, 900, phase === 'found', 300)
@@ -143,7 +143,7 @@ export function Scene03Distance({ onDone, unlock }: SceneProps) {
             <p className="hint">{copy.distance.hint}</p>
           </>
         )}
-        {phase === 'found' && foundLines >= 2 && <Cta onClick={onDone}>CONTINUER</Cta>}
+        {phase === 'found' && foundLines >= 2 && <Cta onClick={onDone}>{copy.ui.continue}</Cta>}
       </div>
     </SceneShell>
   )

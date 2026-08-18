@@ -1,0 +1,38 @@
+PHOTO FINALE — CHAPITRE 55
+==========================
+
+Une seule photo apparait dans tout le jeu : sur l'epilogue,
+juste sous "JE RECLIQUERAIS.".
+
+POUR L'AJOUTER
+--------------
+Depose ton image ICI, nommee exactement :
+
+    final.jpg
+
+C'est tout. Rien d'autre a modifier.
+
+FORMATS ACCEPTES
+----------------
+.jpg ou .png uniquement.
+Le format .heic des telephones ne s'affiche PAS dans un navigateur :
+convertis-le en .jpg avant (sur Android : Galerie > Modifier > Enregistrer ;
+sur iPhone : Reglages > Appareil photo > Formats > "Plus compatible").
+
+CADRAGE
+-------
+La photo est affichee en 4:3 (paysage), recadree au centre.
+Une photo ou vous etes toutes les deux, bien au centre, donne le
+meilleur resultat.
+
+SI LE FICHIER EST ABSENT
+------------------------
+Le jeu affiche simplement la version illustree (Chat, Souris, Pirate
+et PeeWee face a la mer). Aucune image cassee ne s'affichera jamais.
+
+CHANGER LA LEGENDE OU DESACTIVER
+--------------------------------
+Dans src/config/story.config.ts, section "photo" :
+  enabled   : true / false
+  caption   : le texte affiche sous la photo
+  treatment : 'duotone' (aux couleurs du jeu) ou 'naturelle'

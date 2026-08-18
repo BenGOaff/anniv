@@ -40,6 +40,35 @@ Les scènes : `00` boot · `01` rencontre · `02` Marseille · `03` distance ·
 `04` Montpellier · `05` Pirate & PeeWee · `06` les niveaux qu'on ne choisit pas ·
 `07` Bonifacio · `08` Propriano · `09` Carnon · `10` Camargue · `11` épilogue.
 
+Un fondu depuis le noir couvre chaque changement de scène, y compris là où il
+n'y a pas de carton de chapitre (la quête secrète et l'épilogue).
+
+## Langue
+
+**Tout le jeu est en français, sans exception.** Aucun mot d'anglais n'est
+affiché à l'écran : le vocabulaire de jeu est traduit (« SUCCÈS » et non
+*achievement*, « SAUVEGARDE » et non *save file*, « ÉQUIPE » et non *party*).
+
+## La photo finale
+
+Une seule photo apparaît dans tout le jeu, sur l'épilogue, sous
+« JE RECLIQUERAIS. ». Pour l'ajouter : dépose ton image dans
+`public/photos/` sous le nom exact **`final.jpg`**. Rien d'autre à modifier.
+
+- Formats acceptés : `.jpg` ou `.png`. Le `.heic` des téléphones ne s'affiche
+  pas dans un navigateur, il faut le convertir avant.
+- Affichage en 4:3 paysage, recadré au centre. Une photo où vous êtes toutes
+  les deux, bien au centre, donne le meilleur résultat.
+- Si le fichier est absent, le jeu garde la version illustrée : aucune image
+  cassée ne s'affichera jamais.
+- Réglages dans `storyConfig.photo` : `enabled`, `caption`, et `treatment`
+  (`'duotone'` pour l'accorder aux couleurs du jeu, `'naturelle'` sinon).
+
+Le duotone est appliqué par un filtre SVG (`#cs-duotone`) et non par
+`mix-blend-mode`, dont le rendu n'est pas fiable d'un navigateur à l'autre.
+
+Le détail complet est aussi rappelé dans `public/photos/A-LIRE.txt`.
+
 ## Modifier les textes, la date, le cadeau
 
 **Tout le contenu éditorial est dans un seul fichier : `src/config/story.config.ts`.**
@@ -125,6 +154,11 @@ donc aucune dépendance au réseau du restaurant.
 
 Tous les visuels (personnages, décors, pictos, patches) sont des SVG originaux
 écrits pour ce projet. Aucun asset d'Uncharted, Superdry, Gayvox ou PlayStation.
+
+Les quatre personnages sont dessinés dans un registre d'emblème gravé, pas de
+mascotte de dessin animé : traits fins, yeux en amande, palette sourde, aucun
+reflet rond façon autocollant. Les boutons sont plats et nets, sans halo ni
+brillance qui balaie.
 
 ## Performance et robustesse
 

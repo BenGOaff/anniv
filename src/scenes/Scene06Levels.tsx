@@ -113,7 +113,7 @@ export function Scene06Levels({ onDone, unlock }: SceneProps) {
             <HoldButton label={copy.levels.cta} value={value} onHoldChange={handleHold} />
           </>
         )}
-        {done && canLeave && <Cta onClick={onDone}>CONTINUER</Cta>}
+        {done && canLeave && <Cta onClick={onDone}>{copy.ui.continue}</Cta>}
       </div>
     </SceneShell>
   )

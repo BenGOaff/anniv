@@ -3,6 +3,7 @@ import { AchievementPatch, ChapterCard, Hud, RotateGate } from './components/ui'
 import {
   achievements,
   chapters,
+  copy,
   sceneOrder,
   type Achievement,
   type AchievementId,
@@ -70,8 +71,12 @@ export default function App() {
         {scene}
       </div>
 
+      {/* Fondu depuis le noir a chaque changement de scene :
+          aucune coupure seche, meme sans carton de chapitre. */}
+      <div key={`veil-${state.scene}`} className="veil" />
+
       <Hud
-        chapter={secret ? undefined : chapter ? `${chapter.index} ${chapter.title}` : 'ÉPILOGUE'}
+        chapter={secret ? undefined : chapter ? `${chapter.index} ${chapter.short ?? chapter.title}` : copy.ui.epilogue}
         index={index}
         total={sceneOrder.length}
         audio={state.audio}

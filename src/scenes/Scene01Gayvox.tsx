@@ -128,7 +128,7 @@ export function Scene01Gayvox({ onDone, unlock }: SceneProps) {
           </Cta>
         )}
         {phase === 'connected' && lines >= copy.gayvox.callLines.length && (
-          <Cta onClick={onDone}>CONTINUER</Cta>
+          <Cta onClick={onDone}>{copy.ui.continue}</Cta>
         )}
       </div>
     </SceneShell>

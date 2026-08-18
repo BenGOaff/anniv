@@ -18,7 +18,7 @@ export function Scene08Propriano({ onDone, unlock }: SceneProps) {
   const sayYes = () => {
     sfx('reveal')
     setPhase('married')
-    unlock('married-mode')
+    unlock('mariees')
   }
 
   return (
@@ -108,7 +108,7 @@ export function Scene08Propriano({ onDone, unlock }: SceneProps) {
           <div className="stack gap-8">
             {phase === 'title' && <Cta onClick={sayYes}>{copy.propriano.cta}</Cta>}
             {phase === 'married' && unlockedLines >= copy.propriano.unlocked.length && (
-              <Cta onClick={onDone}>CONTINUER</Cta>
+              <Cta onClick={onDone}>{copy.ui.continue}</Cta>
             )}
           </div>
         </>

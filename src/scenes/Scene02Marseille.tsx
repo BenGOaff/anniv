@@ -69,7 +69,7 @@ export function Scene02Marseille({ onDone, unlock }: SceneProps) {
             <Souris size={86} eyes="closed" />
           </div>
         </div>
-        <Cta onClick={onDone}>CONTINUER</Cta>
+        <Cta onClick={onDone}>{copy.ui.continue}</Cta>
       </SceneShell>
     )
   }

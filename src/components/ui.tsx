@@ -3,7 +3,7 @@
    ============================================================ */
 
 import { useEffect, useRef, useState, type ReactNode } from 'react'
-import { marks, type Achievement } from '../config/story.config'
+import { copy, marks, storyConfig, type Achievement } from '../config/story.config'
 import { sfx } from '../lib/audio'
 
 /* ---------- HUD ---------- */
@@ -33,7 +33,7 @@ export function Hud({
         <button
           className="hud-btn"
           aria-pressed={audio}
-          aria-label={audio ? 'Couper le son' : 'Activer le son'}
+          aria-label={audio ? copy.ui.soundOn : copy.ui.soundOff}
           onClick={onToggleAudio}
         >
           <SoundIcon on={audio} />
@@ -82,7 +82,7 @@ export function ChapterCard({
   return (
     <div className="chapter-card">
       <div className="chapter-rule" />
-      <div className="chapter-index">CHAPITRE {index}</div>
+      <div className="chapter-index">{copy.ui.chapter} {index}</div>
       <h2 className="chapter-title">{title}</h2>
       <div className="chapter-place">{place}</div>
       <div className="chapter-marks">
@@ -249,9 +249,63 @@ export function RotateGate() {
         <path d="M11 18.5h2" strokeLinecap="round" />
       </svg>
       <p className="headline" style={{ fontSize: 26 }}>
-        REMETS L’ÉCRAN EN PORTRAIT
+        {copy.ui.rotate}
       </p>
-      <p className="caption caption-dim">Ce chapitre se joue à la verticale.</p>
+      <p className="caption caption-dim">{copy.ui.rotateNote}</p>
     </div>
+  )
+}
+
+
+/* ---------- Plaque photo ----------
+   Une seule photo dans tout le jeu, sur l'epilogue.
+   Si le fichier est absent ou illisible, rien ne s'affiche et
+   la version illustree reste en place : aucune image cassee. */
+
+export function PhotoPlate({ onStatus }: { onStatus?: (ok: boolean) => void }) {
+  const { photo } = storyConfig
+  const [ok, setOk] = useState(false)
+
+  if (!photo.enabled) return null
+
+  return (
+    <figure className="photo-plate" style={ok ? undefined : { display: 'none' }}>
+      {/* Rampe navy -> orange -> creme : la photo entre dans la
+          palette du jeu au lieu de trancher avec le reste. */}
+      <svg width="0" height="0" aria-hidden="true" style={{ position: 'absolute' }}>
+        <filter id="cs-duotone" colorInterpolationFilters="sRGB">
+          <feColorMatrix
+            type="matrix"
+            values="0.2126 0.7152 0.0722 0 0
+                    0.2126 0.7152 0.0722 0 0
+                    0.2126 0.7152 0.0722 0 0
+                    0 0 0 1 0"
+          />
+          <feComponentTransfer>
+            <feFuncR type="table" tableValues="0.075 0.62 0.969" />
+            <feFuncG type="table" tableValues="0.102 0.34 0.894" />
+            <feFuncB type="table" tableValues="0.165 0.24 0.824" />
+          </feComponentTransfer>
+        </filter>
+      </svg>
+      <div className={`photo-frame ${photo.treatment === 'duotone' ? 'duotone' : ''}`}>
+        <img
+          src={photo.src}
+          alt=""
+          onLoad={() => {
+            setOk(true)
+            onStatus?.(true)
+          }}
+          onError={() => {
+            setOk(false)
+            onStatus?.(false)
+          }}
+        />
+      </div>
+      <figcaption className="photo-caption">
+        <span>{photo.caption}</span>
+        <b>{marks.signature}</b>
+      </figcaption>
+    </figure>
   )
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Backdrop, Seascape } from '../art/Backdrops'
 import { Chat, PeeWee, Pirate, Souris } from '../art/Characters'
-import { Cta, SceneShell } from '../components/ui'
+import { Cta, PhotoPlate, SceneShell } from '../components/ui'
 import { copy } from '../config/story.config'
 import { useStagger, useTimeout } from '../hooks/useSequence'
 import { sfx } from '../lib/audio'
@@ -10,6 +10,7 @@ type Phase = 'letter' | 'final' | 'cats-cross' | 'cats-notif' | 'cats-talk' | 'r
 
 export function Scene11Epilogue({ onReplay }: { onReplay: () => void }) {
   const [phase, setPhase] = useState<Phase>('letter')
+  const [photoOk, setPhotoOk] = useState(false)
   const lines = useStagger(copy.epilogue.lines.length, 2200, phase === 'letter', 900)
 
   useTimeout(
@@ -55,8 +56,9 @@ export function Scene11Epilogue({ onReplay }: { onReplay: () => void }) {
         )}
 
         {phase !== 'letter' && (
-          <div className="stack gap-16 center">
+          <div className="stack gap-12 center">
             <h2 className="headline ep-final">{copy.epilogue.finalLine}</h2>
+            <PhotoPlate onStatus={setPhotoOk} />
             <p className="ep-sign">
               {copy.epilogue.signature} <span className="ep-heart">♥</span>
             </p>
@@ -76,8 +78,8 @@ export function Scene11Epilogue({ onReplay }: { onReplay: () => void }) {
         {phase === 'remember' && <p className="mono-line dim ep-remember anim-in">{copy.epilogue.catsRemember}</p>}
       </div>
 
-      {/* la famille face a la mer */}
-      <div className="ep-family">
+      {/* la famille face a la mer — effacee si la vraie photo s'affiche */}
+      <div className="ep-family" hidden={photoOk && phase !== 'letter'}>
         <Chat size={78} eyes="closed" />
         <Souris size={66} eyes="closed" />
         {(phase === 'cats-talk' || phase === 'remember') && (

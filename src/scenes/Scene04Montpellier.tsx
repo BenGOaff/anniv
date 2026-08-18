@@ -31,7 +31,7 @@ export function Scene04Montpellier({ onDone, unlock }: SceneProps) {
     if (phase === 'suitcase' && t >= 0.99) {
       setPhase('home')
       sfx('achievement')
-      unlock('co-op-mode')
+      unlock('a-deux')
     }
   }, [t, phase, unlock])
 
@@ -113,7 +113,7 @@ export function Scene04Montpellier({ onDone, unlock }: SceneProps) {
               onClick={() => {
                 sfx('heart')
                 setPhase('kiss')
-                unlock('connection-restored')
+                unlock('connexion')
               }}
             >
               {copy.montpellier.ctaApproach}
@@ -124,7 +124,7 @@ export function Scene04Montpellier({ onDone, unlock }: SceneProps) {
         {phase === 'kiss' && <MonoLines lines={copy.montpellier.restored} visible={restored} tone="" />}
 
         {phase === 'home' && homeLines >= copy.montpellier.home.length && (
-          <Cta onClick={onDone}>CONTINUER</Cta>
+          <Cta onClick={onDone}>{copy.ui.continue}</Cta>
         )}
       </div>
     </SceneShell>

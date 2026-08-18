@@ -37,7 +37,7 @@ export function Scene09Carnon({ onDone, unlock }: SceneProps) {
     if (ending) return
     setEnding(true)
     setOpen(null)
-    unlock('current-build')
+    unlock('version-actuelle')
   }
 
   const tap = (id: string) => {

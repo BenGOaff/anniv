@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Backdrop, MedMap, CoordTicks } from '../art/Backdrops'
 import { Chat, Souris } from '../art/Characters'
 import { Cta, SceneShell } from '../components/ui'
-import { copy, marks, storyConfig } from '../config/story.config'
+import { copy, marks } from '../config/story.config'
 import { useStagger, useTimeout } from '../hooks/useSequence'
 
 export function Scene00Boot({
@@ -104,7 +104,7 @@ export function Scene00Boot({
             <div className="boot-marks">
               <span>{marks.p1}</span>
               <span>{marks.p2}</span>
-              <span>CO-OP SINCE {storyConfig.relationshipStartYear}</span>
+              <span>{marks.since}</span>
             </div>
           </div>
         )}

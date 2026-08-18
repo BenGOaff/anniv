@@ -87,7 +87,7 @@ button {
     repeating-linear-gradient(
       115deg,
       transparent 0 3px,
-      rgba(245, 243, 238, 0.014) 3px 4px
+      rgba(245, 243, 238, 0.009) 3px 4px
     );
   mix-blend-mode: overlay;
 }
@@ -101,7 +101,7 @@ button {
   background: radial-gradient(
     120% 90% at 50% 45%,
     transparent 40%,
-    rgba(6, 10, 20, 0.55) 100%
+    rgba(6, 10, 20, 0.48) 100%
   );
 }
 

@@ -16,7 +16,7 @@ export function Scene05Party({ onDone, unlock }: SceneProps) {
     const next: [boolean, boolean] = [...open] as [boolean, boolean]
     next[i] = true
     setOpen(next)
-    unlock(i === 0 ? 'pirate-joined' : 'peewee-joined')
+    unlock(i === 0 ? 'pirate' : 'peewee')
   }
 
   return (
@@ -73,7 +73,7 @@ export function Scene05Party({ onDone, unlock }: SceneProps) {
         )}
       </div>
 
-      {both && <Cta onClick={onDone}>CONTINUER</Cta>}
+      {both && <Cta onClick={onDone}>{copy.ui.continue}</Cta>}
     </SceneShell>
   )
 }

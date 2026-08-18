@@ -76,7 +76,7 @@ export function Scene10Camargue({ onDone, unlock }: SceneProps) {
     sfx('reveal')
     setFlash((f) => f + 1)
     setPhase('accepted')
-    unlock('legendary-player')
+    unlock('legendaire')
   }
 
   /* ---------------- Faux generique ---------------- */
