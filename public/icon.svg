@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <rect width="128" height="128" rx="26" fill="#131A2A"/>
+  <g stroke="#3478F6" stroke-width="1.4" fill="none" opacity="0.35">
+    <path d="M-6 44 C 24 34, 44 56, 70 46 C 96 36, 112 56, 136 46"/>
+    <path d="M-6 66 C 24 56, 44 78, 70 68 C 96 58, 112 78, 136 68"/>
+    <path d="M-6 88 C 24 78, 44 100, 70 90 C 96 80, 112 100, 136 90"/>
+  </g>
+  <text x="64" y="88" font-family="Barlow Condensed, Oswald, Arial Narrow, sans-serif" font-weight="700"
+        font-size="70" fill="#FF5A24" text-anchor="middle" letter-spacing="1">55</text>
+  <rect x="22" y="98" width="84" height="3" fill="#E63E48"/>
+  <text x="64" y="30" font-family="ui-monospace, Menlo, monospace" font-size="10"
+        fill="#A9B1BD" text-anchor="middle" letter-spacing="3">C&amp;S</text>
+</svg>

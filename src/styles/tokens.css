@@ -1,0 +1,59 @@
+/* ============================================================
+   CHAT & SOURIS // CHAPITRE 55
+   Design tokens — palette imposee par le brief.
+   Interdiction absolue : or, dore, bronze, jaune-or.
+   ============================================================ */
+
+:root {
+  /* Palette */
+  --ink: #131a2a;
+  --ink-deep: #0b1020;
+  --ink-soft: #1c2740;
+  --orange: #ff5a24;
+  --red: #e63e48;
+  --blue: #3478f6;
+  --aqua: #55d6e8;
+  --off-white: #f5f3ee;
+  --grey: #a9b1bd;
+
+  /* Derives */
+  --grey-dim: #6d7686;
+  --line: rgba(169, 177, 189, 0.22);
+  --line-strong: rgba(169, 177, 189, 0.4);
+  --glass: rgba(245, 243, 238, 0.06);
+  --glass-2: rgba(245, 243, 238, 0.1);
+
+  /* Typo */
+  --font-display: 'Barlow Condensed', 'Oswald', 'Haettenschweiler',
+    'Arial Narrow', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Rythme */
+  --t-micro: 200ms;
+  --t-fast: 320ms;
+  --t-mid: 450ms;
+  --t-chapter: 900ms;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Safe areas iOS */
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+
+  /* Gouttiere HUD */
+  --hud-top: calc(var(--sat) + 10px);
+  --hud-bottom: calc(var(--sab) + 10px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --t-micro: 1ms;
+    --t-fast: 1ms;
+    --t-mid: 1ms;
+    --t-chapter: 1ms;
+  }
+}

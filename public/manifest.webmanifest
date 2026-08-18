@@ -1,0 +1,14 @@
+{
+  "name": "Chat & Souris // Chapitre 55",
+  "short_name": "Chapitre 55",
+  "description": "Session co-op. Acces reserve.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#131A2A",
+  "theme_color": "#131A2A",
+  "icons": [
+    { "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
