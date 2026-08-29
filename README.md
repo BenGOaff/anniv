@@ -1,4 +1,4 @@
-# CHAT & SOURIS // CHAPITRE 55 : LA PROCHAINE AVENTURE
+# CHAT & SOURIS // CHAPITRE 57 : LA PROCHAINE AVENTURE
 
 Mini-jeu web narratif, jouable en portrait sur iPhone, accessible par lien ou QR code.
 11 scènes + épilogue, 7 à 10 minutes, aucune possibilité de perdre ou de rester bloquée.
@@ -21,7 +21,7 @@ Le build produit un site **100 % statique** dans `dist/`. Aucun backend, aucune 
 aucun compte. Déployable sur Vercel, Netlify, Hostinger, un simple dossier FTP, etc.
 
 `base` est réglé sur `./` : le jeu fonctionne aussi bien à la racine d'un domaine
-que dans un sous-dossier (`https://mondomaine.tld/cs-55-7f3k9x/`).
+que dans un sous-dossier (`https://mondomaine.tld/cs-57-7f3k9x/`).
 
 ## Mode preview / debug
 
@@ -94,10 +94,10 @@ dans `copy.camargue` (`dayName`, `dateFull`) et `chapters.s08` si besoin.
 ## QR code
 
 ```bash
-npm run qr -- https://mondomaine.tld/cs-55-7f3k9x/
+npm run qr -- https://mondomaine.tld/cs-57-7f3k9x/
 ```
 
-Génère `qr/chapitre-55.svg` et `qr/chapitre-55.png` (1024 px, correction d'erreur H,
+Génère `qr/chapitre-57.svg` et `qr/chapitre-57.png` (1024 px, correction d'erreur H,
 encre navy sur off-white).
 
 ## Confidentialité — ne rien spoiler
@@ -106,18 +106,18 @@ Déjà en place dans le code :
 
 - `<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">`
 - `public/robots.txt` bloquant tout crawl
-- titre et Open Graph neutres (« Chat & Souris // Chapitre 55 », vignette sans Camargue ni spa)
+- titre et Open Graph neutres (« Chat & Souris // Chapitre 57 », vignette sans Camargue ni spa)
 - aucune mention de la destination, du programme ou du 30 août avant la scène finale
 - la scène 10 masque son titre de chapitre et la barre de progression pour préserver
   la fausse fin
 
 **À faire au déploiement** : choisir une URL non devinable, par exemple
-`/cs-55-7f3k9x/` — jamais `/cadeau-sylvie-camargue/`.
+`/cs-57-7f3k9x/` — jamais `/cadeau-sylvie-camargue/`.
 
 ## Sauvegarde
 
 Progression, achievements et préférence audio dans `localStorage`
-(clé `cs55.save.v2`). Au retour, l'écran titre propose **CONTINUER** ou **RECOMMENCER**.
+(clé `cs57.save.v1`). Au retour, l'écran titre propose **CONTINUER** ou **RECOMMENCER**.
 En navigation privée Safari, l'écriture échoue silencieusement : le jeu reste jouable.
 
 ## Son

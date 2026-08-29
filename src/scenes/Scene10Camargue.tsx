@@ -3,7 +3,7 @@ import { Backdrop, CamargueLandscape, MedMap, TopoLines } from '../art/Backdrops
 import { Chat, Souris } from '../art/Characters'
 import { bonusIcons, puzzleIcons } from '../art/Icons'
 import { Cta, Flash, MonoLines, SceneShell } from '../components/ui'
-import { copy } from '../config/story.config'
+import { copy, storyConfig } from '../config/story.config'
 import { useGiftDateLabel } from '../hooks/useGameProgress'
 import { useStagger, useTimeout } from '../hooks/useSequence'
 import { sfx } from '../lib/audio'
@@ -288,7 +288,7 @@ export function Scene10Camargue({ onDone, unlock }: SceneProps) {
       {phase === 'accepted' && (
         <div className="middle">
           <div className="cm-patch anim-in">
-            <span className="cm-patch-ring">55</span>
+            <span className="cm-patch-ring">{storyConfig.chapter}</span>
             <MonoLines lines={copy.camargue.patch} visible={patchLines} tone="warn" />
           </div>
         </div>

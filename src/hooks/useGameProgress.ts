@@ -1,7 +1,10 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { sceneOrder, storyConfig, type SceneId, type AchievementId } from '../config/story.config'
 
-const SAVE_KEY = 'cs55.save.v2'
+/* Le numero de chapitre change la cle : les sauvegardes de test faites
+   pendant la mise au point sont automatiquement ignorees, et l'ecran
+   titre ne montre pas "PARTIE EN COURS" a la premiere joueuse. */
+export const SAVE_KEY = 'cs57.save.v1'
 
 export type SaveState = {
   scene: SceneId

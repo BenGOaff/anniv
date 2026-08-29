@@ -6,7 +6,7 @@
     <path d="M-6 88 C 24 78, 44 100, 70 90 C 96 80, 112 100, 136 90"/>
   </g>
   <text x="64" y="88" font-family="Barlow Condensed, Oswald, Arial Narrow, sans-serif" font-weight="700"
-        font-size="70" fill="#FF5A24" text-anchor="middle" letter-spacing="1">55</text>
+        font-size="70" fill="#FF5A24" text-anchor="middle" letter-spacing="1">57</text>
   <rect x="22" y="98" width="84" height="3" fill="#E63E48"/>
   <text x="64" y="30" font-family="ui-monospace, Menlo, monospace" font-size="10"
         fill="#A9B1BD" text-anchor="middle" letter-spacing="3">C&amp;S</text>

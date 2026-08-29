@@ -9,7 +9,7 @@ import {
   type AchievementId,
   type SceneId,
 } from './config/story.config'
-import { useGameProgress } from './hooks/useGameProgress'
+import { SAVE_KEY, useGameProgress } from './hooks/useGameProgress'
 import { setAudioEnabled, startAmbience, stopAmbience } from './lib/audio'
 import { Scene00Boot } from './scenes/Scene00Boot'
 import { Scene01Gayvox } from './scenes/Scene01Gayvox'
@@ -120,7 +120,7 @@ export default function App() {
 /** Scene de reprise : celle enregistree dans la sauvegarde. */
 function readResumeScene(): SceneId {
   try {
-    const raw = localStorage.getItem('cs55.save.v2')
+    const raw = localStorage.getItem(SAVE_KEY)
     if (raw) {
       const parsed = JSON.parse(raw) as { scene?: string }
       if (parsed.scene && (sceneOrder as readonly string[]).includes(parsed.scene)) {

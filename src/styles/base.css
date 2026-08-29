@@ -57,7 +57,9 @@ button {
   position: relative;
   width: 100%;
   max-width: 430px;
+  height: 100vh;
   height: 100dvh;
+  max-height: 100vh;
   max-height: 100dvh;
   overflow: hidden;
   background: var(--ink);

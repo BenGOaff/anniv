@@ -38,7 +38,9 @@ export function Scene06Levels({ onDone, unlock }: SceneProps) {
   useTimeout(() => setCanLeave(true), outro >= copy.levels.outro.length ? 1600 : null)
 
   const wordIndex = Math.min(copy.levels.words.length - 1, Math.floor(value * copy.levels.words.length))
-  const color = done ? 1 : value
+  /* Quantifie : le filtre du decor ne change que par paliers de 5 %,
+     au lieu d'etre recalcule a chaque image sur un grand SVG. */
+  const color = done ? 1 : Math.round(value * 20) / 20
 
   return (
     <SceneShell

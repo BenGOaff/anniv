@@ -126,6 +126,11 @@
   position: absolute;
   inset: 0;
   z-index: 50;
+  /* JAMAIS interactif : c'est un carton decoratif.
+     Safari n'applique pas le `visibility: hidden` de fin d'animation,
+     l'element restait donc cliquable et avalait tous les taps de la
+     scene en dessous. Sans cette ligne, le jeu est injouable sur iPhone. */
+  pointer-events: none;
   background: var(--ink);
   display: flex;
   flex-direction: column;

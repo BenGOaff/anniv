@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* Genere le QR code du jeu en SVG + PNG.
-   Usage : npm run qr -- https://mon-domaine.tld/cs-55-7f3k9x/           */
+   Usage : npm run qr -- https://mon-domaine.tld/cs-57-7f3k9x/           */
 
 import { mkdir, writeFile } from 'node:fs/promises'
 import QRCode from 'qrcode'
@@ -21,11 +21,11 @@ const options = {
 await mkdir('qr', { recursive: true })
 
 const svg = await QRCode.toString(url, { ...options, type: 'svg' })
-await writeFile('qr/chapitre-55.svg', svg)
+await writeFile('qr/chapitre-57.svg', svg)
 
 const png = await QRCode.toBuffer(url, { ...options, type: 'png' })
-await writeFile('qr/chapitre-55.png', png)
+await writeFile('qr/chapitre-57.png', png)
 
 console.log('QR genere pour', url)
-console.log('  qr/chapitre-55.svg')
-console.log('  qr/chapitre-55.png')
+console.log('  qr/chapitre-57.svg')
+console.log('  qr/chapitre-57.png')

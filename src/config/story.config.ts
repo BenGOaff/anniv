@@ -1,5 +1,5 @@
 /* ============================================================
-   CHAT & SOURIS // CHAPITRE 55 — CONFIGURATION EDITORIALE
+   CHAT & SOURIS // CHAPITRE 57 — CONFIGURATION EDITORIALE
    ------------------------------------------------------------
    SOURCE DE VERITE UNIQUE.
    Tout ce qui peut changer (prenoms, dates, textes, cadeau)
@@ -10,8 +10,13 @@
    "ACHIEVEMENT", "SAUVEGARDE" et non "SAVE FILE").
    ============================================================ */
 
+/* Numero du chapitre = age de Sylvie. Une seule valeur a changer :
+   le titre, la version, le niveau et le patch final en decoulent tous. */
+const CHAPITRE = 57
+
 export const storyConfig = {
-  player1: { name: 'Sylvie', alias: 'Chat', age: 55 },
+  chapter: CHAPITRE,
+  player1: { name: 'Sylvie', alias: 'Chat', age: CHAPITRE },
   player2: { name: 'Bénédicte', alias: 'Souris' },
 
   relationshipStartYear: 2014,
@@ -19,7 +24,7 @@ export const storyConfig = {
   revealDate: '2026-08-29', // samedi, au restaurant
   giftDate: '2026-08-30', // dimanche, la quete
 
-  build: '55.0',
+  build: `${CHAPITRE}.0`,
 
   gift: {
     destination: 'Camargue',
@@ -95,7 +100,7 @@ export const achievements: Achievement[] = [
   { id: 'quete-principale', code: '009', label: 'QUÊTE PRINCIPALE ACCEPTÉE', context: '2021 // BONIFACIO', tone: 'aqua' },
   { id: 'mariees', code: '010', label: 'MODE MARIÉES', context: '2022 // PROPRIANO', tone: 'red' },
   { id: 'version-actuelle', code: '011', label: 'VERSION ACTUELLE', context: 'CARNON', tone: 'blue' },
-  { id: 'legendaire', code: '012', label: 'JOUEUSE LÉGENDAIRE', context: 'NIVEAU 55', tone: 'orange' },
+  { id: 'legendaire', code: '012', label: 'JOUEUSE LÉGENDAIRE', context: `NIVEAU ${CHAPITRE}`, tone: 'orange' },
 ]
 
 /* ------------------------------------------------------------
@@ -108,7 +113,7 @@ export const marks = {
   p1: 'JOUEUSE 01 // CHAT',
   p2: 'JOUEUSE 02 // SOURIS',
   unit: 'UNITÉ MÉDITERRANÉE',
-  build: 'VERSION // 55.0',
+  build: `VERSION // ${CHAPITRE}.0`,
   series: 'SÉRIE AVENTURE',
   since: 'ENSEMBLE DEPUIS 2014',
 }
@@ -148,11 +153,11 @@ export const copy = {
     lines: ['VÉRIFICATION DU SYSTÈME…', 'JOUEUSE IDENTIFIÉE'],
     player: 'SYLVIE',
     alias: 'ALIAS // CHAT',
-    build: 'VERSION // 55.0',
+    build: `VERSION // ${CHAPITRE}.0`,
     status: 'STATUT // LÉGENDAIRE',
     connected: 'Souris est connectée.',
     title: 'CHAT & SOURIS',
-    subtitle: 'CHAPITRE 55 : LA PROCHAINE AVENTURE',
+    subtitle: `CHAPITRE ${CHAPITRE} : LA PROCHAINE AVENTURE`,
     cta: 'LANCER LA PARTIE',
     continue: 'CONTINUER',
     restart: 'RECOMMENCER',
@@ -215,7 +220,7 @@ export const copy = {
     pirate: 'PIRATE REJOINT L’ÉQUIPE',
     peewee: 'PEEWEE REJOINT L’ÉQUIPE',
     size: 'ÉQUIPE // 4 MEMBRES',
-    note: 'Frère et sœur. Ils rejoignent la famille.',
+    note: 'La famille est complète.',
   },
 
   levels: {
@@ -288,7 +293,7 @@ export const copy = {
   },
 
   camargue: {
-    falseEnd: ['FIN DU CHAPITRE 55', 'MERCI D’AVOIR JOUÉ'],
+    falseEnd: [`FIN DU CHAPITRE ${CHAPITRE}`, 'MERCI D’AVOIR JOUÉ'],
     detected: 'SIGNAL DÉTECTÉ',
     locked: 'PROCHAINE QUÊTE // CHIFFRÉE',
     ctaDecrypt: 'DÉCHIFFRER',
@@ -334,7 +339,7 @@ export const copy = {
       departLabel: 'DÉPART',
       cta: 'J’ACCEPTE LA QUÊTE',
     },
-    patch: ['QUÊTE ACCEPTÉE', 'NIVEAU 55 // JOUEUSE LÉGENDAIRE', 'NOUVELLE AVENTURE PROGRAMMÉE', '30.08.2026'],
+    patch: ['QUÊTE ACCEPTÉE', `NIVEAU ${CHAPITRE} // JOUEUSE LÉGENDAIRE`, 'NOUVELLE AVENTURE PROGRAMMÉE', '30.08.2026'],
   },
 
   epilogue: {

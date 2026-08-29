@@ -1,7 +1,7 @@
 {
-  "name": "chat-et-souris-ch55",
+  "name": "chat-et-souris-ch57",
   "private": true,
-  "version": "55.0.0",
+  "version": "57.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",

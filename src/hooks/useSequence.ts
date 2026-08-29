@@ -44,31 +44,49 @@ export function useSteps(auto?: { until: number; delay: number }) {
   return [step, advance, setStep] as const
 }
 
-/** Valeur qui monte de 0 a 1 tant que `holding` est vrai, et redescend sinon. */
+/**
+ * Valeur qui monte de 0 a 1 tant que `holding` est vrai, et redescend sinon.
+ *
+ * Le calcul est base sur l'horloge reelle, pas sur le rythme des images :
+ * une jauge annoncee a 7 s met exactement 7 s a se remplir, meme si la
+ * scene rame. La version precedente cumulait les ecarts entre images en
+ * les plafonnant a 64 ms, ce qui faisait perdre la moitie du temps des
+ * que le telephone descendait sous 15 images par seconde.
+ */
 export function useHoldGauge(holding: boolean, msToFull = 4200, decayFactor = 2.2) {
   const [value, setValue] = useState(0)
+  const valueRef = useRef(0)
   const raf = useRef(0)
-  const last = useRef(0)
+
   useEffect(() => {
+    const base = valueRef.current
+    const start = performance.now()
     let cancelled = false
-    last.current = 0
-    const tick = (t: number) => {
+
+    const tick = () => {
       if (cancelled) return
-      if (!last.current) last.current = t
-      const dt = Math.min(64, t - last.current)
-      last.current = t
-      setValue((v) => {
-        const delta = dt / msToFull
-        const nv = holding ? v + delta : v - delta * decayFactor
-        return Math.min(1, Math.max(0, nv))
-      })
+      const progress = (performance.now() - start) / msToFull
+      const next = Math.min(
+        1,
+        Math.max(0, holding ? base + progress : base - progress * decayFactor),
+      )
+      if (next !== valueRef.current) {
+        valueRef.current = next
+        setValue(next)
+      }
+      /* Une fois la jauge a fond ou a zero, plus rien ne bouge tant que
+         l'etat ne change pas : on arrete la boucle au lieu de tourner
+         pour rien dans le vide. */
+      if ((holding && next >= 1) || (!holding && next <= 0)) return
       raf.current = requestAnimationFrame(tick)
     }
+
     raf.current = requestAnimationFrame(tick)
     return () => {
       cancelled = true
       cancelAnimationFrame(raf.current)
     }
   }, [holding, msToFull, decayFactor])
+
   return value
 }
